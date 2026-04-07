@@ -25,7 +25,7 @@ def tool_introduce():
 
     can_do = '''
 输入数字选择功能:
-    [1] yanxi-info(爆破+爬虫)
+    [1] 子域名扫描(爆破+爬虫)
     [2] 端口扫描(多线程)
     [3] 敬请期待...
     '''
@@ -55,7 +55,6 @@ class subdomain_blast:
         for filename in self.filenames:
             if os.path.exists(f"./URL/{domain}/{filename}.txt"):
                 os.remove(f"./URL/{domain}/{filename}.txt")
-
         if not os.path.exists(f"./URL"):
             os.mkdir("./URL")
 
@@ -218,6 +217,12 @@ class port_scaner:
     port_scan_list = set()  # 集合
     scan_lock = threading.Lock()  # 线程锁
 
+    def clean_file(self, ip):
+        if os.path.exists(f"./URL/{ip}开放端口.txt"):
+            os.remove(f"./URL/{ip}开放端口.txt")
+        if not os.path.exists(f"./URL"):
+            os.mkdir("./URL")
+
     def config(self):
         with open(f"{self.CONFIG_PATH}", "r", encoding='utf-8') as f:
             conf = f.read().splitlines()
@@ -240,7 +245,8 @@ class port_scaner:
                 s.close()
                 with self.scan_lock:
                     print(f"\033[32m{port}:[ON]\033[0m")
-                    self.openPorts.append(port)
+                    with open(f"./URL/{self.ip}开放端口.txt", "a+", encoding='utf-8') as f:
+                            f.write(f"{self.ip}:{port}\n")
             except:
                 with self.scan_lock:
                     print(f"\033[31m{port}:[OFF]\033[0m")
@@ -253,12 +259,6 @@ class port_scaner:
             self.threads.append(t)
         for t in self.threads:
             t.join()
-
-        # 写入开放的端口
-    def open_port(self):
-        with open(f"./URL/{self.ip}.txt", "a+", encoding='utf-8') as f:
-            for port in self.openPorts:
-                f.write(f"{self.ip}:{port}\n")
 
     def run_port(self, ip):
         self.ip = ip
@@ -299,6 +299,7 @@ if action == "2":
     port_scaner.config()# 加载配置
 
     ip = input("输入域名或IP:")
-    port_scaner.run_port(ip)
+    port_scaner.clean_file(ip)# 清理对应的文件
+    port_scaner.run_port(ip)# 开始扫描端口
 
 input("[+]按回车结束...")
