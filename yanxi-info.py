@@ -14,21 +14,22 @@ def tool_introduce():
       / / / // __ `// __ \   | |/_// /  ______    / / / __ \ / /_ / __ \ ''' + "\033[31m" + r'''
      / /_/ // /_/ // / / /  _>  < / /  /_____/  _/ / / / / // __// /_/ /
      \__, / \__,_//_/ /_/  /_/|_|/_/           /___//_/ /_//_/   \____/
-    /____/                                                              ''' + "\033[0m"
+    /____/                                                              ''' + "\033[32m" + '''
+[*]Version 0.0.1
+[*]项目地址:https://github.com/yanxisec/yanxi-info
+[*]By yanxisec(昖喜)
+
+\033[34m\033[40m[+]初次使用建议阅读 README.md\033[0m'''
 
     print(title)
-    print("\033[32m[+]Version 0.0.1\033[0m")
-    print("""\033[33m
-[+]By 昖喜(yan xi)
-    [-]微信公众号:昖喜sec\033[0m""")
-    print("\033[34m\033[40m[+]初次使用建议阅读 README.md\033[0m")
 
     can_do = '''
-输入数字选择功能:
+\033[33m支持功能:
     [1] 子域名扫描(爆破+爬虫)
     [2] 端口扫描(多线程)
-    [3] 敬请期待...
-    '''
+    [3] 敬请期待...\033[0m
+    
+输入数字选择功能: '''
     return input(can_do)
 
 '''
@@ -262,11 +263,11 @@ class port_scaner:
 
     def run_port(self, ip):
         self.ip = ip
-        model = input("""选择扫描模式(默认1000端口,直接回车即可)
-        1 1000端口
-        2 全端口
-        3 自定义端口
-        """)
+        model = input("""\033[33m   扫描模式(回车默认1000端口)
+    [1] 1000端口
+    [2] 全端口
+    [3] 自定义端口\033[0m
+""")
 
         if model == "2":
             self.choice_model(self.ALLPORT_PATH)
@@ -277,8 +278,6 @@ class port_scaner:
         else:
             self.choice_model(self.PORT1000_PATH)
 
-        self.open_port()
-
 # 加载介绍
 action = tool_introduce()
 
@@ -287,7 +286,7 @@ if action == "1":
     subdomain_blast = subdomain_blast()
     subdomain_blast.load_dictionary()# 读取字典
     subdomain_blast.config()# 读取配置
-    domain = input("输入域名，例:google.cn 或 github.com\n")
+    domain = input("    \033[92m输入域名，例:google.cn 或 github.com\033[0m\n")
     subdomain_blast.clean_file(domain)# 清理存在的文件与新建文件夹
     subdomain_blast.http_s_(domain)# 判断使用http还是https(优先https)
     subdomain_blast.thread(domain)# 开始爆破
@@ -298,7 +297,7 @@ if action == "2":
     port_scaner = port_scaner()
     port_scaner.config()# 加载配置
 
-    ip = input("输入域名或IP，例:www.google.cn 或 127.0.0.1\n")
+    ip = input("    \033[92m输入域名或IP，例:www.google.cn 或 127.0.0.1\033[0m\n")
     port_scaner.clean_file(ip)# 清理对应的文件
     port_scaner.run_port(ip)# 开始扫描端口
 
