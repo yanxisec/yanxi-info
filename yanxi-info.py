@@ -298,7 +298,7 @@ if action == "2":
     port_scaner = port_scaner()
     port_scaner.config()# 加载配置
 
-    ip = input("输入域名或IP:")
+    ip = input("输入域名或IP，例:www.google.cn 或 127.0.0.1\n")
     port_scaner.clean_file(ip)# 清理对应的文件
     port_scaner.run_port(ip)# 开始扫描端口
 
