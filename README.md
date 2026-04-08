@@ -10,8 +10,8 @@
 
 [+]Version 0.0.1​
 
-<img width="930" height="411" alt="image" src="https://github.com/user-attachments/assets/7f2d0cf2-9572-4c81-bc98-fd5366cb624c" />
-
+<img width="1480" height="760" alt="image" src="https://github.com/user-attachments/assets/3db4f7a8-ef94-4724-9e94-b53ccedc8dbe" />
+<img width="1480" height="760" alt="image" src="https://github.com/user-attachments/assets/33ffd8c8-badb-4238-bba5-4cb07e3c3d41" />
 
 安装依赖
 
