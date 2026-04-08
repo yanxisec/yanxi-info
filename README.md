@@ -43,13 +43,13 @@
 
 **子域名**
 
-子域名爆破->`\dictionary\submins.txt`
+    子域名爆破->`\dictionary\submins.txt`
 
 **端口扫描**
 
-默认1000端口字典->`\dictionary\1000-port.txt`
+    默认1000端口字典->`\dictionary\1000-port.txt`
 
-全端口字典->`\dictionary\all-port.txt`
+    全端口字典->`\dictionary\all-port.txt`
 
-用户自定义端口->`\dictionary\user-define-port.txt`
+    用户自定义端口->`\dictionary\user-define-port.txt`
 
