@@ -13,9 +13,7 @@
 <img width="1480" height="760" alt="image" src="https://github.com/user-attachments/assets/3db4f7a8-ef94-4724-9e94-b53ccedc8dbe" />
 <img width="1480" height="760" alt="image" src="https://github.com/user-attachments/assets/33ffd8c8-badb-4238-bba5-4cb07e3c3d41" />
 
-安装依赖
 
-    pip install -r requirements.txt
 ————————————————————————————————————————————————————
 
 ## 配置
