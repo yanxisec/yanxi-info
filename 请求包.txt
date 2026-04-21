@@ -1,0 +1,18 @@
+GET /slmide/lessons/ HTTP/1.1
+Host: code.xdf.cn
+Cookie: gr_user_id=60e42b26-a730-4047-8868-548dfa211a8a; x-e-dr=2f752b07-2819-4853-a25d-fd9c8cc0242f; cityCode=370400; cityName=%E6%9E%A3%E5%BA%84; XDFUUID=a7987857-d3af-8446-4d8d-97d04abbc89c; _ga=GA1.2.1056677449.1776331365; tfstk=gq-iVXZbdF71jNVEqSSsJbkUxvgdfGsfhIEAMiCq865CMAG66iVDw6V9Wq9VuIAetx1TDKyVnQfpXZIN6ifcTIfAXGrtmEfeONCObnYQmL9XXAsxCG91cil-w0IDCdsf2-UPxh4UTTvUbl7qJMocLi1nw0nJQVW1DplJWbGjat6V0O7V7WkhntSVQZRVTwWPe5SV0Ikh8TB7uO7abw7FF65V0iR2LvXfTOSV0IJEKtGPKA590H-EavVu1lWBmHXGS_JnPorcOuQNaNCU0jxhIS5yQ6q40_znkD9HBfqWpGtJZTdtYlAk3LTV-nVEZstHLh82d5cVdEROY1Ir7Jj9fd8Pu3lbuQjMia-N--kDBd5Gx9-rHz1px1d2jwk8qZIe2aSwJ2GOkGXkghOgnoRypLK1RncuTsTOFMWDcYzciZSyXyzyKPqfrfTulr_Nd9fRch-0YHwhP0knKz7f7961wvD3lr_Nd9f-Kv4yGNWCC_C..; t=32e5edb1cf6d4fa5846ec2b39228ed9f; id=; username=ebc8b7091704481a8d4138d4eb2e53d2; type=1; b94f421e30caf491_gr_session_id=708978d7-61b1-451b-9807-607ce006190a; Hm_lvt_0f0bfa1aa5762a2693a96837130e19e6=1776340842,1776394043,1776586836,1776751286; HMACCOUNT=851C17DF33E1A98A; Hm_lvt_3aa8402c17c235b1bb67dac5891792a9=1776751756; Hm_lpvt_3aa8402c17c235b1bb67dac5891792a9=1776751756; Hm_lvt_e010d1faf316a4dbfe8639481a2a3f90=1776331363,1776394446,1776589264,1776751891; HMACCOUNT=851C17DF33E1A98A; _gid=GA1.2.2118058201.1776751892; Hm_lpvt_e010d1faf316a4dbfe8639481a2a3f90=1776753056; _ga_F6KF614NZ5=GS2.2.s1776751892$o4$g1$t1776753056$j60$l0$h0; b94f421e30caf491_gr_session_id_sent_vst=708978d7-61b1-451b-9807-607ce006190a; Hm_lpvt_0f0bfa1aa5762a2693a96837130e19e6=1776756478
+Cache-Control: max-age=0
+Sec-Ch-Ua: "Not)A;Brand";v="8", "Chromium";v="138", "Google Chrome";v="138"
+Sec-Ch-Ua-Mobile: ?0
+Sec-Ch-Ua-Platform: "Windows"
+Upgrade-Insecure-Requests: 1
+User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/138.0.0.0 Safari/537.36
+Accept: text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.7
+Sec-Fetch-Site: none
+Sec-Fetch-Mode: navigate
+Sec-Fetch-User: ?1
+Sec-Fetch-Dest: document
+Accept-Encoding: gzip, deflate, br
+Accept-Language: zh-CN,zh;q=0.9,en;q=0.8,zh-TW;q=0.7,ja;q=0.6
+Priority: u=0, i
+Connection: keep-alive
