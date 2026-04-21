@@ -1,4 +1,4 @@
-GET http://154.197.241.180:888/ HTTP/1.1
+GET / HTTP/1.1
 Host: 154.197.241.180:888
 Cache-Control: max-age=0
 Upgrade-Insecure-Requests: 1
