@@ -358,10 +358,10 @@ class bypass403:
 
         '''从请求包提取对应的 IP/域名 与 路径 且判断应使用http还是https'''
         try:
-            self.url = 'https://' + self.headers['Host'] + re.findall(r'T (.*?) H', bypassBag[0])[0]
+            self.url = 'http://' + self.headers['Host'] + re.findall(r'T (.*?) H', bypassBag[0])[0]
             requests.get(self.url, headers=self.bypassHeaders)
         except:
-            self.url = 'http://' + self.headers['Host'] + re.findall(r'T (.*?) H', bypassBag[0])[0]
+            self.url = 'https://' + self.headers['Host'] + re.findall(r'T (.*?) H', bypassBag[0])[0]
 
     def headerBypass(self):
         '''请求头绕过'''

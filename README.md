@@ -1,18 +1,18 @@
 # yanxi-info信息收集工具
 
+## 介绍
+
 [+]一款(开发中)的综合信息收集工具,当前功能:
 
 ​	  [-]子域名爆破&爬虫提取子域名
 
-​	  [-]验活&超时二次检测	
+​	  [-]自动验活&超时二次检测	
 
 ​	  [-]端口存活扫描
 
-[+]Version 0.0.1​
+​	  [-]403Bypass
 
-<img width="1480" height="760" alt="image" src="https://github.com/user-attachments/assets/3db4f7a8-ef94-4724-9e94-b53ccedc8dbe" />
-<img width="1480" height="760" alt="image" src="https://github.com/user-attachments/assets/33ffd8c8-badb-4238-bba5-4cb07e3c3d41" />
-
+[+]Version 0.0.2
 
 ————————————————————————————————————————————————————
 
@@ -20,7 +20,7 @@
 
 配置目录`\config\config.txt`
 
-目前可自定义`线程`、 `超时时间`、`子域名超时复检时间`
+目前可自定义`线程`、 `域名访问超时时间`、`超时复检时间`
 
 ————————————————————————————————————————————————————
 
@@ -31,15 +31,41 @@
 
 #### <-使用说明->
 
-    <u>举例：</u>想找`google.cn`的子域名，那就输入`google.cn`
+    <u>举例：</u>想找`baidu.com的子域名，那就输入`baidu.com`
+    
+    程序会在当前文件夹生成`./URL/baidu.com/`，以及`存活子域名.txt`、`存活日志.txt`、`超时子域名.txt`
+    
+    [!]超时检测的时间可在/config/config.txt中自行配置
 
-    程序会在当前文件夹生成`./URL/google.cn/`，以及`存活子域名.txt`、`存活日志.txt`、`超时子域名.txt`
+![image-20260428142524954](C:\Users\egie\AppData\Roaming\Typora\typora-user-images\image-20260428142524954.png)
 
 ————————————————————————————————————————————————————
 
 ## 端口扫描
 
 可选择1000常见端口、全端口、自定义端口。
+
+![image-20260428142346147](C:\Users\egie\AppData\Roaming\Typora\typora-user-images\image-20260428142346147.png)
+
+————————————————————————————————————————————————————
+
+## 403Bypass
+
+需要将对应的数据包粘贴至 "请求包.txt"中
+
+```
+目前支持:请求头绕过、路由绕过、API版本绕过
+```
+
+#### <-使用说明->
+
+```
+将请求包复制到 "请求包.txt"之后选择"[3] 403bypass"即可
+```
+
+![image-20260428143236504](C:\Users\egie\AppData\Roaming\Typora\typora-user-images\image-20260428143236504.png)
+
+![image-20260428143159625](C:\Users\egie\AppData\Roaming\Typora\typora-user-images\image-20260428143159625.png)
 
 ————————————————————————————————————————————————————
 
@@ -52,8 +78,8 @@
 **端口扫描**
 
     默认1000端口字典->`\dictionary\1000-port.txt`
-
+    
     全端口字典->`\dictionary\all-port.txt`
-
+    
     用户自定义端口->`\dictionary\user-define-port.txt`
 
