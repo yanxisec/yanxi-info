@@ -37,7 +37,8 @@
     
     [!]超时检测的时间可在/config/config.txt中自行配置
 
-![image-20260428142524954](C:\Users\egie\AppData\Roaming\Typora\typora-user-images\image-20260428142524954.png)
+<img width="1480" height="759" alt="image-20260428142524954" src="https://github.com/user-attachments/assets/5373c0a3-13ae-46ab-a1e2-d201c284d3bd" />
+
 
 ————————————————————————————————————————————————————
 
@@ -45,7 +46,8 @@
 
 可选择1000常见端口、全端口、自定义端口。
 
-![image-20260428142346147](C:\Users\egie\AppData\Roaming\Typora\typora-user-images\image-20260428142346147.png)
+<img width="1480" height="759" alt="image-20260428142346147" src="https://github.com/user-attachments/assets/187c7a94-99f5-48a8-980e-66a3738adc15" />
+
 
 ————————————————————————————————————————————————————
 
@@ -63,9 +65,11 @@
 将请求包复制到 "请求包.txt"之后选择"[3] 403bypass"即可
 ```
 
-![image-20260428143236504](C:\Users\egie\AppData\Roaming\Typora\typora-user-images\image-20260428143236504.png)
+<img width="1091" height="400" alt="image-20260428143236504" src="https://github.com/user-attachments/assets/9a85daaf-7709-4cac-8a4f-21886f7be52a" />
 
-![image-20260428143159625](C:\Users\egie\AppData\Roaming\Typora\typora-user-images\image-20260428143159625.png)
+
+<img width="1480" height="759" alt="image-20260428143159625" src="https://github.com/user-attachments/assets/dda44b97-3c3f-4844-8fbe-d86d29775c99" />
+
 
 ————————————————————————————————————————————————————
 
